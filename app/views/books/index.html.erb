@@ -1,0 +1,59 @@
+<body>
+  <p class="green-text"><%= notice %></p>
+  <h1>Books</h1>
+  <% if @books.present? %>
+    <table class="book-list">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @books.each do |book| %>
+        <tr>
+        　<td><%= book.title %></td>
+        　<td><%= book.body %></td>
+          <td><%= link_to "Show", book_path(book) %></td>
+          <td><%= link_to "Edit", edit_book_path(book) %></td>
+          <td><%= link_to "Destroy", book_path(book), method: :delete, data: {confirm: "Are you sure?"} %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end  %>
+
+
+
+
+  <h2>New Book</h2>
+
+  <% if @book.errors.any? %>
+    <div class="red-text">
+    <% if @book.errors.count == 1 %>
+      <%= @book.errors.count %> error prohibited this book from being saved:
+    <% else %>
+      <%= @book.errors.count %> errors prohibited this book from being saved:
+    <% end %>
+
+    <% @book.errors.full_messages.each do |message| %>
+    <br><%= message %>
+    <% end %>
+    </div>
+  <% end %>
+
+  <%= form_with model: @book, local:true do |f| %>
+    <div class="field">
+      <label for="book_title">Title</label>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <label for="book_body">Body</label>
+      <%= f.text_area :body %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Create Book' %>
+    </div>
+  <% end %>
+</body>
