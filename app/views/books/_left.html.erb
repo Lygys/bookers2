@@ -1,6 +1,6 @@
 <div class="col-md-3">
   <h2>User Info</h2>
-  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle"; %>
+  <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"%>
   <table class="table">
     <tbody>
       <tr>
@@ -13,11 +13,10 @@
       </tr>
     </tbody>
   </table>
-  <% if user.id == current_user.id %>
-    <div class="row">
-    <p><%= link_to "プロフィール編集", edit_user_path(user), class:"text-dark" %></p>
-    </div>
-  <% end %>
+
+  <div class="row">
+    <%= link_to '', edit_user_path(current_user.id), class: 'btn btn-outline-secondary btn-block fas fa-user-cog edit_user_43503' %>
+  </div>
 
   <h2 class="mt-3">New Book</h2>
 
