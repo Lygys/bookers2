@@ -1,12 +1,5 @@
-<body>
-  <main>
-    <p class="green-text"><%= notice %></p>
-    <div class="container px-5 px-sm-0">
-      <div class="row">
-        <%= render 'books/left', user: current_user %>
-        <%= render 'books/right', books: @books %>
-      </div>
-              <div class="col-md-8 offset-md-1">
+
+        <div class="col-md-8 offset-md-1">
           <h2>Books</h2>
           <table class="table table-hover table-inverse">
             <thead>
@@ -18,9 +11,13 @@
               </tr>
             </thead>
             <tbody>
-              <% @books.each do |book| %>
+              <% books.each do |book| %>
                 <tr>
-                  <td><%= book.user_id %></td>
+                  <td>
+                    <%= link_to user_path(book.user_id) do %>
+                      <%= attachment_image_tag book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+                    <% end %>
+                  </td>
                 　<td><%= book.title %></td>
                 　<td><%= book.body %></td>
                 　<td><%= link_to "Show", book_path(book) %></td>
@@ -31,6 +28,3 @@
             </tbody>
           </table>
         </div>
-    </div>
-  </main>
-</body>
