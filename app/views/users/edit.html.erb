@@ -3,27 +3,28 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>User Info</h2>
 
-      <%= form_with model: @user, local: true do |f| %>
 
-        <div class="field">
+      <%= form_with model: @user, local: true do |f| %>
+        <%= render "devise/shared/error_messages", resource: @user %>
+
+        <div class="form-group">
           <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+          <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name" %>
         </div>
 
-        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"mb-3" %>
-        <div class="field">
+        <div class="form-group">
           <%= f.label :image %><br />
           <label>
-            <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "w-100" %>
+            <%= f.attachment_field :profile_image, placeholder: "Profile Image", class: "w-100" %>
           </label>
         </div>
 
-        <div class="field">
+        <div class="form-group">
           <%= f.label :introduction %><br />
-          <%= f.text_area :introduction %>
+          <%= f.text_area :introduction, class: "form-control" %>
         </div>
 
-        <div class="actions">
+        <div class="form-group">
           <%= f.submit "Update User", class: "btn btn-secondary" %>
         </div>
       <% end %>

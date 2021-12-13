@@ -1,18 +1,6 @@
-<p id="notice"><%= notice %></p>
 <div class="container px-5 px-sm-0">
 
-  <% if @nbook.errors.any? %>
-    <div id="error_explanation">
-      <% if @nbook.errors.count == 1 %>
-        <h3><%= @nbook.errors.count %> error prohibited this book from being saved:</h3>
-      <% else %>
-        <h3><%= @nbook.errors.count %> errors prohibited this book from being saved:</h3>
-      <% end %>
-      <% @nbook.errors.full_messages.each do |message| %>
-        <br><%= message %>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render "devise/shared/error_messages", resource: @nbook %>
 
   <div class="row">
     <%= render 'books/left', user: current_user %>
