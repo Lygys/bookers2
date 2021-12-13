@@ -1,25 +1,21 @@
-<body>
-  <main>
-    <p class="green-text"><%= notice %></p>
-    <div class="container px-5 px-sm-0">
-      <% if @book.errors.any? %>
-        <div id="error_explanation">
-          <% if @book.errors.count == 1 %>
-            <h3><%= @book.errors.count %> error prohibited this book from being saved:</h3>
-          <% else %>
-            <h3><%= @book.errors.count %> errors prohibited this book from being saved:</h3>
-          <% end %>
-          <% @book.errors.full_messages.each do |message| %>
-          <br><%= message %>
-          <% end %>
-        </div>
+<p class="green-text"><%= notice %></p>
+<div class="container px-5 px-sm-0">
+
+  <% if @nbook.errors.any? %>
+    <div id="error_explanation">
+      <% if @nbook.errors.count == 1 %>
+        <h3><%= @nbook.errors.count %> error prohibited this book from being saved:</h3>
+      <% else %>
+        <h3><%= @nbook.errors.count %> errors prohibited this book from being saved:</h3>
       <% end %>
-
-      <div class="row">
-        <%= render 'books/left', user: current_user %>
-
-        <%= render 'books/right', books: @books %>
-      </div>
+      <% @nbook.errors.full_messages.each do |message| %>
+        <br><%= message %>
+      <% end %>
     </div>
-  </main>
-</body>
+  <% end %>
+
+  <div class="row">
+    <%= render 'books/left', user: current_user %>
+    <%= render 'books/right', books: @books %>
+  </div>
+</div>
